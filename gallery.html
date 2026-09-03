@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Media, video documentaries, press features, and photo highlights documenting community advocacy, GBV prevention, and field impact by Purity M. Omariba.">
+  <title>Media & Impact Gallery | Purity M. Omariba</title>
+  <link rel="stylesheet" href="css/style.css?v=4">
+  <style>
+    /* Dedicated Page Styling for Media Gallery */
+    .filter-wrapper {
+      display: flex;
+      justify-content: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      margin-top: 1.5rem;
+    }
+
+    .filter-btn {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-color);
+      color: var(--text-dark);
+      padding: 0.6rem 1.25rem;
+      border-radius: var(--radius);
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .filter-btn:hover,
+    .filter-btn.active {
+      background-color: var(--primary);
+      color: #ffffff;
+      border-color: var(--primary);
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-top: 2.5rem;
+    }
+
+    .media-card {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .media-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--primary);
+    }
+
+    /* Video Embed Container (16:9 Aspect Ratio) */
+    .video-container {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%; /* 16:9 Aspect Ratio */
+      background-color: #000000;
+    }
+
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    .media-image-wrapper {
+      position: relative;
+      width: 100%;
+      height: 220px;
+      overflow: hidden;
+      background-color: var(--bg-accent);
+    }
+
+    .media-image-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: var(--transition);
+    }
+
+    .media-card:hover .media-image-wrapper img {
+      transform: scale(1.05);
+    }
+
+    .media-body {
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .media-tag {
+      display: inline-block;
+      align-self: flex-start;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding: 0.25rem 0.6rem;
+      border-radius: 4px;
+      margin-bottom: 0.75rem;
+      background-color: var(--bg-accent);
+      color: var(--primary);
+    }
+
+    .media-tag.video {
+      background-color: #fee2e2;
+      color: #dc2626;
+    }
+
+    .media-tag.press {
+      background-color: #dcfce7;
+      color: #16a34a;
+    }
+
+    .media-title {
+      font-size: 1.15rem;
+      color: var(--secondary);
+      margin-bottom: 0.5rem;
+    }
+
+    .media-desc {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+
+    @media (max-width: 992px) {
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="logo">Purity Omariba<span>.</span></a>
+      
+      <!-- Far-Right Mobile Menu Toggle Button -->
+      <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="expertise.html">Expertise</a></li>
+        <li><a href="projects.html">Projects & Impact</a></li>
+        <li><a href="gallery.html" class="active">Media Gallery</a></li>
+        <li><a href="cv.html">CV & Experience</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="docs/Purity_Omariba_CV.pdf" download class="btn btn-primary">Download CV</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- Page Banner -->
+  <section class="section section-accent" style="padding: 3.5rem 0;">
+    <div class="container" style="text-align: center;">
+      <h1 class="section-title">Media & Impact Gallery</h1>
+      <p class="section-subtitle" style="margin-left: auto; margin-right: auto;">
+        A visual showcase of field activities, video documentaries, community outreach programs, and organizational press engagements.
+      </p>
+
+      <!-- Category Filter Buttons -->
+      <div class="filter-wrapper">
+        <button class="filter-btn active" onclick="filterGallery('all')">All Items</button>
+        <button class="filter-btn" onclick="filterGallery('video')">Video Highlights</button>
+        <button class="filter-btn" onclick="filterGallery('photo')">Photo Albums</button>
+        <button class="filter-btn" onclick="filterGallery('press')">Press & Broadcast</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery Grid Section -->
+  <section class="section">
+    <div class="container">
+      <div class="gallery-grid">
+
+        <!-- Item 1: Embedded Video -->
+        <article class="media-card video">
+          <div class="video-container">
+            <iframe src="https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ" title="Red Nose Campaign Story Feature" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+          <div class="media-body">
+            <span class="media-tag video">Video Documentary</span>
+            <h3 class="media-title">International Red Nose Campaign Story</h3>
+            <p class="media-desc">Documentary feature capturing life and community dignity without FGM, utilized globally for resource mobilization and advocacy.</p>
+          </div>
+        </article>
+
+        <!-- Item 2: Photo Album -->
+        <article class="media-card photo">
+          <div class="media-image-wrapper">
+            <img src="https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?auto=format&fit=crop&w=800&q=80" alt="Grassroots Workshop Session" loading="lazy">
+          </div>
+          <div class="media-body">
+            <span class="media-tag">Photo Album</span>
+            <h3 class="media-title">CECOME Community Sensitization</h3>
+            <p class="media-desc">Field session in Kisii County focused on gender-transformative dialog and public awareness on human rights.</p>
+          </div>
+        </article>
+
+        <!-- Item 3: Broadcast Feature -->
+        <article class="media-card press">
+          <div class="video-container">
+            <iframe src="https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ" title="TV Interview on Anti-GBV Strategies" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+          <div class="media-body">
+            <span class="media-tag press">TV Broadcast</span>
+            <h3 class="media-title">Television Interview: GBV Prevention</h3>
+            <p class="media-desc">National broadcast feature discussing regional interventions and community advocacy efforts across Western Kenya.</p>
+          </div>
+        </article>
+
+        <!-- Item 4: Photo Album -->
+        <article class="media-card photo">
+          <div class="media-image-wrapper">
+            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80" alt="Journalists Training Session" loading="lazy">
+          </div>
+          <div class="media-body">
+            <span class="media-tag">Photo Album</span>
+            <h3 class="media-title">Journalist Capacity Masterclass</h3>
+            <p class="media-desc">Training regional media reporters on gender-sensitive reporting standards and ethical story production.</p>
+          </div>
+        </article>
+
+        <!-- Item 5: Photo Album -->
+        <article class="media-card photo">
+          <div class="media-image-wrapper">
+            <img src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?auto=format&fit=crop&w=800&q=80" alt="EU Grantee Workshop" loading="lazy">
+          </div>
+          <div class="media-body">
+            <span class="media-tag">Photo Album</span>
+            <h3 class="media-title">EU-FSTP Sub-Grantee Strategy Forum</h3>
+            <p class="media-desc">Capacity building meeting with 30 grassroots grantee organizations under the EU-funded communications framework.</p>
+          </div>
+        </article>
+
+        <!-- Item 6: Embedded Video -->
+        <article class="media-card video">
+          <div class="video-container">
+            <iframe src="https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ" title="Community Podcast Series" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+          <div class="media-body">
+            <span class="media-tag video">Podcast Highlight</span>
+            <h3 class="media-title">Voices of Change Podcast Episode</h3>
+            <p class="media-desc">Audio-visual podcast episode featuring local activists discussing health rights and community safety.</p>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h3>Purity M. Omariba</h3>
+          <p>Communications Specialist dedicated to strategic communication, advocacy, and human-centered storytelling within the development sector.</p>
+        </div>
+        <div class="footer-links">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="about.html">About Me</a></li>
+            <li><a href="expertise.html">Core Expertise</a></li>
+            <li><a href="projects.html">Projects & Impact</a></li>
+            <li><a href="gallery.html">Media Gallery</a></li>
+            <li><a href="cv.html">Curriculum Vitae</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>Direct Contact</h4>
+          <ul>
+            <li><a href="mailto:purityomariba16@gmail.com">purityomariba16@gmail.com</a></li>
+            <li>Location: Kenya</li>
+            <li><a href="contact.html">Send Message</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Purity M. Omariba. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Script for Filtering and Mobile Menu -->
+  <script src="js/script.js?v=4"></script>
+  <script>
+    function filterGallery(category) {
+      const cards = document.querySelectorAll('.media-card');
+      const buttons = document.querySelectorAll('.filter-btn');
+
+      buttons.forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+
+      cards.forEach(card => {
+        if (category === 'all' || card.classList.contains(category)) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+  </script>
+
+</body>
+</html>

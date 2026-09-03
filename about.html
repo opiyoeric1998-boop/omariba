@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Professional biography, education, development focus areas, and certification timeline for Purity M. Omariba, Communications Specialist.">
+  <title>About Me | Purity M. Omariba</title>
+  <link rel="stylesheet" href="css/style.css?v=4">
+  <style>
+    /* Dedicated Page Styles for About & Timelines */
+    .bio-grid {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 3.5rem;
+      align-items: start;
+    }
+
+    .bio-sidebar {
+      background-color: var(--bg-card);
+      padding: 2rem;
+      border-radius: var(--radius);
+      border: 1px solid var(--border-color);
+    }
+
+    .bio-sidebar h4 {
+      margin-bottom: 1rem;
+      color: var(--secondary);
+    }
+
+    .bio-sidebar ul {
+      list-style: none;
+    }
+
+    .bio-sidebar li {
+      padding: 0.5rem 0;
+      border-bottom: 1px dashed var(--border-color);
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+
+    .bio-sidebar li:last-child {
+      border-bottom: none;
+    }
+
+    .tag-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+
+    .tag {
+      background-color: var(--bg-accent);
+      color: var(--primary);
+      padding: 0.4rem 0.8rem;
+      border-radius: 4px;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    /* Timeline Component */
+    .timeline {
+      position: relative;
+      padding-left: 2rem;
+      margin-top: 2rem;
+      border-left: 2px solid var(--border-color);
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 2rem;
+    }
+
+    .timeline-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: -2.55rem;
+      top: 0.25rem;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background-color: var(--primary);
+      border: 3px solid var(--bg-card); /* Fixed undefined variable --bg-light */
+    }
+
+    .timeline-date {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 0.25rem;
+    }
+
+    .timeline-title {
+      font-size: 1.15rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .timeline-institution {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    @media (max-width: 850px) {
+      .bio-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="logo">Purity Omariba<span>.</span></a>
+      
+      <!-- Far-Right Mobile Menu Toggle Button -->
+      <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html" class="active">About</a></li>
+        <li><a href="expertise.html">Expertise</a></li>
+        <li><a href="projects.html">Projects & Impact</a></li>
+        <li><a href="gallery.html">Media Gallery</a></li>
+        <li><a href="cv.html">CV & Experience</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="docs/Purity_Omariba_CV.pdf" download class="btn btn-primary">Download CV</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- Page Header -->
+  <section class="section section-accent" style="padding: 3.5rem 0;">
+    <div class="container">
+      <h1 class="section-title">About Purity M. Omariba</h1>
+      <p class="section-subtitle">Communications Specialist operating across strategic communication, media relations, public advocacy, and multimedia storytelling within the international development sector.</p>
+    </div>
+  </section>
+
+  <!-- Biography Section -->
+  <section class="section">
+    <div class="container bio-grid">
+      
+      <aside class="bio-sidebar">
+        <h4>Professional Positioning</h4>
+        <ul>
+          <li><strong>Role:</strong> Communications Specialist</li>
+          <li><strong>Experience:</strong> 5+ Years</li>
+          <li><strong>Sector:</strong> NGO & International Development</li>
+          <li><strong>Location:</strong> Kenya</li>
+        </ul>
+
+        <h4 style="margin-top: 1.5rem;">Key Development Sectors</h4>
+        <div class="tag-cloud">
+          <span class="tag">GBV Prevention</span>
+          <span class="tag">Gender Justice</span>
+          <span class="tag">SRHR</span>
+          <span class="tag">FGM Prevention</span>
+          <span class="tag">Civic Education</span>
+          <span class="tag">Educational Support</span>
+          <span class="tag">Livelihood Promotion</span>
+          <span class="tag">Gender Mainstreaming</span>
+        </div>
+      </aside>
+
+      <main class="bio-main">
+        <h2 style="margin-bottom: 1rem;">Biography</h2>
+        <p style="margin-bottom: 1.25rem;">
+          Purity M. Omariba is a results-oriented Communications Specialist with over five years of professional experience managing internal and external communications, media relations, public advocacy campaigns, digital communications, and multimedia content production in the non-governmental and development sectors.
+        </p>
+        <p style="margin-bottom: 1.25rem;">
+          Her expertise lies at the intersection of strategic communication and social advocacy. Purity specializes in translating complex program goals into tailored communication frameworks that amplify organizational visibility, strengthen stakeholder trust, and drive policy dialogue. She has consistently demonstrated an ability to turn ground-level field achievements and participant feedback into compelling narratives across television, radio, digital platforms, and print media.
+        </p>
+        <p style="margin-bottom: 1.25rem;">
+          Throughout her work with multi-grant projects and cross-functional teams, Purity incorporates gender-sensitive and gender-transformative approaches into all strategic messaging. By leveraging multimedia tools—including photography, documentary planning, podcasts, and digital campaigns—she ensures that human-centered storytelling remains the focal point of community outreach and international resource mobilization initiatives.
+        </p>
+      </main>
+
+    </div>
+  </section>
+
+  <!-- Academic Background -->
+  <section class="section section-accent">
+    <div class="container">
+      <div class="section-header" style="text-align: left; max-width: 100%;">
+        <h2 class="section-title">Academic Background</h2>
+        <p class="section-subtitle">Formal qualifications in communications, journalism, and media studies.</p>
+      </div>
+
+      <div class="timeline" style="max-width: 800px;">
+        
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Expected Graduation: 2028</div>
+          <h3 class="timeline-title">Master's in Communication and Media Studies</h3>
+          <div class="timeline-institution">Kisii University</div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">2019</div>
+          <h3 class="timeline-title">Bachelor of Arts – Journalism and Applied Communication</h3>
+          <div class="timeline-institution">Multimedia University of Kenya</div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">2015</div>
+          <h3 class="timeline-title">Diploma in Mass Communication</h3>
+          <div class="timeline-institution">Nairobi Aviation College, Kisumu</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Professional Certifications -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header" style="text-align: left; max-width: 100%;">
+        <h2 class="section-title">Professional Training & Certifications</h2>
+        <p class="section-subtitle">Continuous professional development across media advocacy, safeguarding, strategic communication, and program strengthening.</p>
+      </div>
+
+      <div class="timeline" style="max-width: 800px;">
+        
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">2026</div>
+          <h3 class="timeline-title">Safeguarding Training</h3>
+          <div class="timeline-institution">Independent Consultant</div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">2025</div>
+          <h3 class="timeline-title">Mental Health and Wellbeing Training — Core Concepts</h3>
+          <div class="timeline-institution">Professional Wellness Program</div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">2025</div>
+          <h3 class="timeline-title">Male Engagement Training</h3>
+          <div class="timeline-institution">Men Engage Kenya Network</div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">2024</div>
+          <h3 class="timeline-title">Media Advocacy Masterclass</h3>
+          <div class="timeline-institution">Equality Now</div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">2024</div>
+          <h3 class="timeline-title">Communication, Advocacy and Resource Mobilization Mentorship Session</h3>
+          <div class="timeline-institution">AMREF Health Africa</div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">2024</div>
+          <h3 class="timeline-title">Budget Advocacy</h3>
+          <div class="timeline-institution">Uraia Trust / Equality Now</div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">2024</div>
+          <h3 class="timeline-title">Organization Development System Strengthening Training</h3>
+          <div class="timeline-institution">AMREF Health Africa</div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">2024</div>
+          <h3 class="timeline-title">Legal and Media Advocacy Training</h3>
+          <div class="timeline-institution">Equality Now</div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">2024</div>
+          <h3 class="timeline-title">Psychological First Aid Training</h3>
+          <div class="timeline-institution">World YWCA</div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">2023</div>
+          <h3 class="timeline-title">Communication and Storytelling</h3>
+          <div class="timeline-institution">Equality Now</div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">2023 – 2026</div>
+          <h3 class="timeline-title">Local Journalists and Social Media Influencers Training</h3>
+          <div class="timeline-institution">International Solidarity Foundation</div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">2022</div>
+          <h3 class="timeline-title">Media Engagement</h3>
+          <div class="timeline-institution">White Ribbon Alliance</div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">2022</div>
+          <h3 class="timeline-title">Strategic Communication</h3>
+          <div class="timeline-institution">GEM Trust Africa</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h3>Purity M. Omariba</h3>
+          <p>Communications Specialist dedicated to strategic communication, advocacy, and human-centered storytelling within the development sector.</p>
+        </div>
+        <div class="footer-links">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="about.html">About Me</a></li>
+            <li><a href="expertise.html">Core Expertise</a></li>
+            <li><a href="projects.html">Projects & Impact</a></li>
+            <li><a href="gallery.html">Media Gallery</a></li>
+            <li><a href="cv.html">Curriculum Vitae</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>Direct Contact</h4>
+          <ul>
+            <li><a href="mailto:purityomariba16@gmail.com">purityomariba16@gmail.com</a></li>
+            <li>Location: Kenya</li>
+            <li><a href="contact.html">Send Message</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Purity M. Omariba. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- External JavaScript Link -->
+  <script src="js/script.js?v=4"></script>
+
+</body>
+</html>
