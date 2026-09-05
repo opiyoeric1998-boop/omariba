@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Advocacy campaigns, media training, radio and TV features, and field photography documenting GBV prevention, gender justice, and community impact by Purity M. Omariba.">
+  <title>Media & Impact Gallery | Purity M. Omariba</title>
+  <link rel="stylesheet" href="css/style.css?v=4">
+  <style>
+    /* Dedicated Page Styling for Media Gallery */
+    .filter-wrapper {
+      display: flex;
+      justify-content: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      margin-top: 1.5rem;
+    }
+
+    .filter-btn {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-color);
+      color: var(--text-dark);
+      padding: 0.6rem 1.25rem;
+      border-radius: var(--radius);
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .filter-btn:hover,
+    .filter-btn.active {
+      background-color: var(--primary);
+      color: #ffffff;
+      border-color: var(--primary);
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-top: 2.5rem;
+    }
+
+    .media-card {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .media-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--primary);
+    }
+
+    /* Video Container (16:9 Aspect Ratio) — now holds a native <video>
+       element instead of a YouTube <iframe> */
+    .video-container {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%; /* 16:9 Aspect Ratio */
+      background-color: #000000;
+    }
+
+    .video-container video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      object-fit: cover;
+      background-color: #000000;
+    }
+
+    .media-image-wrapper {
+      position: relative;
+      width: 100%;
+      height: 220px;
+      overflow: hidden;
+      background-color: var(--bg-accent);
+    }
+
+    .media-image-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: var(--transition);
+    }
+
+    .media-card:hover .media-image-wrapper img {
+      transform: scale(1.05);
+    }
+
+    .media-body {
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .media-tag {
+      display: inline-block;
+      align-self: flex-start;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding: 0.25rem 0.6rem;
+      border-radius: 4px;
+      margin-bottom: 0.75rem;
+      background-color: var(--bg-accent);
+      color: var(--primary);
+    }
+
+    .media-tag.video {
+      background-color: #fee2e2;
+      color: #dc2626;
+    }
+
+    .media-tag.press {
+      background-color: #dcfce7;
+      color: #16a34a;
+    }
+
+    .media-title {
+      font-size: 1.15rem;
+      color: var(--secondary);
+      margin-bottom: 0.5rem;
+    }
+
+    .media-desc {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+
+    /* Section divider label, sits above each grid (Videos / Photos) */
+    .gallery-subheading {
+      font-family: var(--font-heading);
+      font-size: 1.4rem;
+      color: var(--secondary);
+      margin-top: 3rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .gallery-subheading:first-of-type {
+      margin-top: 0;
+    }
+
+    /* Catchy highlight note — sits below the video grid */
+    .highlight-note {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      background-color: var(--bg-accent);
+      border-left: 4px solid var(--primary);
+      border-radius: var(--radius);
+      padding: 1.5rem 1.75rem;
+      margin-top: 2rem;
+    }
+
+    .highlight-icon {
+      font-size: 1.8rem;
+      flex-shrink: 0;
+    }
+
+    .highlight-note h4 {
+      color: var(--secondary);
+      font-size: 1.05rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .highlight-note p {
+      color: var(--text-dark);
+      font-size: 0.92rem;
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    @media (max-width: 992px) {
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+      .highlight-note {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="logo">Purity Omariba<span>.</span></a>
+      
+      <!-- Far-Right Mobile Menu Toggle Button -->
+      <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="expertise.html">Expertise</a></li>
+        <li><a href="projects.html">Projects & Impact</a></li>
+        <li><a href="gallery.html" class="active">Media Gallery</a></li>
+        <li><a href="cv.html">CV & Experience</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="docs/Purity_Omariba_CV.pdf" download class="btn btn-primary">Download CV</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- Page Banner -->
+  <section class="section section-accent" style="padding: 3.5rem 0;">
+    <div class="container" style="text-align: center;">
+      <h1 class="section-title">Media & Impact Gallery</h1>
+      <p class="section-subtitle" style="margin-left: auto; margin-right: auto;">
+        A visual showcase of field activities, media features, and advocacy work spanning GBV prevention, gender justice, and community impact.
+      </p>
+
+      <!-- Category Filter Buttons -->
+      <div class="filter-wrapper">
+        <button class="filter-btn active" onclick="filterGallery('all')">All Items</button>
+        <button class="filter-btn" onclick="filterGallery('video')">Videos</button>
+        <button class="filter-btn" onclick="filterGallery('photo')">Photo Albums</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery Grid Section -->
+  <section class="section">
+    <div class="container">
+
+      <!-- ============ VIDEOS (3) ============ -->
+      <h2 class="gallery-subheading">Video Features</h2>
+      <div class="gallery-grid">
+
+        <!-- Video 1: kept -->
+        <article class="media-card video">
+          <div class="video-container">
+            <video controls preload="metadata" poster="images/red-nose-campaign-poster.jpg">
+              <source src="video/VID-20260903-WA0017.mp4" type="video/mp4">
+              Your browser does not support embedded video.
+            </video>
+          </div>
+          <div class="media-body">
+            <span class="media-tag video">Video Documentary</span>
+            <h3 class="media-title">International Red Nose Campaign Story</h3>
+            <p class="media-desc">A documentary feature capturing life without FGM, using personal stories to inspire international support and advocacy.</p>
+          </div>
+        </article>
+
+        <!-- Video 2: kept -->
+        <article class="media-card video">
+          <div class="video-container">
+            <video controls preload="metadata" poster="images/tv-interview-gbv-poster.jpg">
+              <source src="video/VID-2026.mp4" type="video/mp4">
+              Your browser does not support embedded video.
+            </video>
+          </div>
+          <div class="media-body">
+            <span class="media-tag press">TV Broadcast</span>
+            <h3 class="media-title">Television Interview: GBV Prevention</h3>
+            <p class="media-desc">A national TV interview sharing practical strategies for preventing gender-based violence across Western Kenya.</p>
+          </div>
+        </article>
+
+        <!-- Video 3: new, replaces "Voices of Change Podcast Episode" -->
+        <article class="media-card video">
+          <div class="video-container">
+            <video controls preload="metadata" poster="images/press-relations-poster.jpg">
+              <source src="videos/press-relations.mp4" type="video/mp4">
+              Your browser does not support embedded video.
+            </video>
+          </div>
+          <div class="media-body">
+            <span class="media-tag">Media Relations</span>
+            <h3 class="media-title">Press Relations</h3>
+            <p class="media-desc">Nurturing strong media partnerships that expand coverage of advocacy work from local to national outlets.</p>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- Catchy highlight note, placed right under the video section -->
+      <div class="highlight-note">
+        <span class="highlight-icon"></span>
+        <div>
+          <h4>Social Media Engagement — Campaign Strategy</h4>
+          <p>Managing multi-platform campaigns across Facebook, Instagram, TikTok, X, and LinkedIn.</p>
+        </div>
+      </div>
+
+      <!-- ============ PHOTOS (8) ============ -->
+      <h2 class="gallery-subheading">Photo Albums</h2>
+      <div class="gallery-grid">
+
+        <!-- Photo 1 -->
+        <article class="media-card photo">
+          <div class="media-image-wrapper">
+            <img src="images/fgm.jpg" alt="FGM prevention IEC materials" loading="lazy">
+          </div>
+          <div class="media-body">
+            <span class="media-tag">IEC Materials</span>
+            <h3 class="media-title">FGM Prevention</h3>
+            <p class="media-desc">Designing culturally sensitive IEC materials that communicate the realities of FGM in ways communities can relate to and act on.</p>
+          </div>
+        </article>
+
+        <!-- Photo 2 -->
+        <article class="media-card photo">
+          <div class="media-image-wrapper">
+            <img src="images/gender.jpg" alt="Amplifying women's voices at a global advocacy moment" loading="lazy">
+          </div>
+          <div class="media-body">
+            <span class="media-tag">Global Advocacy</span>
+            <h3 class="media-title">Gender Justice</h3>
+            <p class="media-desc">Amplifying women's voices during global advocacy moments, ensuring their experiences shape the conversation.</p>
+          </div>
+        </article>
+
+        <!-- Photo 3 -->
+        <article class="media-card photo">
+          <div class="media-image-wrapper">
+            <img src="images/radio.jpg" alt="Preparing for a radio talk show on advocacy messaging" loading="lazy">
+          </div>
+          <div class="media-body">
+            <span class="media-tag">Radio Advocacy</span>
+            <h3 class="media-title">Radio Show</h3>
+            <p class="media-desc">Preparing for and securing radio talk shows, equipping hosts with gender-sensitive approaches to advocacy messaging.</p>
+          </div>
+        </article>
+
+        <!-- Photo 4 -->
+        <article class="media-card photo">
+          <div class="media-image-wrapper">
+            <img src="images/capacity_building.jpg" alt="Workshop on male engagement and positive masculinity" loading="lazy">
+          </div>
+          <div class="media-body">
+            <span class="media-tag">Workshops</span>
+            <h3 class="media-title">Capacity Building</h3>
+            <p class="media-desc">Designing and delivering workshops on male engagement and positive masculinity to help shift harmful norms.</p>
+          </div>
+        </article>
+
+        <!-- Photo 5 -->
+        <article class="media-card photo">
+          <div class="media-image-wrapper">
+            <img src="images/journal.jpg" alt="Journalist training session on survivor-centered reporting" loading="lazy">
+          </div>
+          <div class="media-body">
+            <span class="media-tag">Media Training</span>
+            <h3 class="media-title">Journalist Training</h3>
+            <p class="media-desc">Equipping media professionals with survivor-centered approaches to reporting on sensitive issues.</p>
+          </div>
+        </article>
+
+        <!-- Photo 6 -->
+        <article class="media-card photo">
+          <div class="media-image-wrapper">
+            <img src="images/ant_gbv.jpg" alt="Survivor-informed anti-GBV campaign" loading="lazy">
+          </div>
+          <div class="media-body">
+            <span class="media-tag">Advocacy Campaign</span>
+            <h3 class="media-title">Anti-GBV Initiatives</h3>
+            <p class="media-desc">Leading survivor-informed campaigns that challenge harmful norms and drive community-level change.</p>
+          </div>
+        </article>
+
+        <!-- Photo 7 -->
+        <article class="media-card photo">
+          <div class="media-image-wrapper">
+            <img src="images/women.jpg" alt="Success story of a women-led enterprise" loading="lazy">
+          </div>
+          <div class="media-body">
+            <span class="media-tag">Economic Empowerment</span>
+            <h3 class="media-title">Women Empowerment Initiatives</h3>
+            <p class="media-desc">Documenting the success stories of women-led enterprises, showcasing resilience and economic progress.</p>
+          </div>
+        </article>
+
+        <!-- Photo 8 -->
+        <article class="media-card photo">
+          <div class="media-image-wrapper">
+            <img src="images/visibility.jpg" alt="Women's handicraft skills on display" loading="lazy">
+          </div>
+          <div class="media-body">
+            <span class="media-tag">Livelihoods</span>
+            <h3 class="media-title">Elevating Women's Handicraft Skills</h3>
+            <p class="media-desc">Spotlighting the craftsmanship and livelihood potential of women's handicraft work to boost visibility and market access.</p>
+          </div>
+        </article>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h3>Purity M. Omariba</h3>
+          <p>Communications Specialist dedicated to strategic communication, advocacy, and human-centered storytelling within the development sector.</p>
+        </div>
+        <div class="footer-links">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="about.html">About Me</a></li>
+            <li><a href="expertise.html">Core Expertise</a></li>
+            <li><a href="projects.html">Projects & Impact</a></li>
+            <li><a href="gallery.html">Media Gallery</a></li>
+            <li><a href="cv.html">Curriculum Vitae</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>Direct Contact</h4>
+          <ul>
+            <li><a href="mailto:purityomariba16@gmail.com">purityomariba16@gmail.com</a></li>
+            <li>Location: Kenya</li>
+            <li><a href="contact.html">Send Message</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Purity M. Omariba. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Script for Filtering and Mobile Menu -->
+  <script src="js/script.js?v=4"></script>
+  <script>
+    function filterGallery(category) {
+      const cards = document.querySelectorAll('.media-card');
+      const buttons = document.querySelectorAll('.filter-btn');
+
+      buttons.forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+
+      cards.forEach(card => {
+        if (category === 'all' || card.classList.contains(category)) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+  </script>
+
+</body>
+</html>
